@@ -1,0 +1,52 @@
+name: New Blog Post Action
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/posts/**"
+
+jobs:
+  process-new-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # - name: Set up Node.js
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: "20"
+
+      # - name: Install dependencies
+      #   run: |
+      #     npm init -y
+      #     npm install graphql graphql-request
+
+      - name: Identify new files
+        id: new-files
+        run: |
+          NEW_FILES=$(git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- src/content/posts/)
+          echo "New files: $NEW_FILES"
+          echo "new_files=$NEW_FILES" >> $GITHUB_OUTPUT
+      - name: Process new files
+        if: steps.new-files.outputs.new_files != ''
+        env:
+          HASHNODE_API_KEY: ${{ secrets.HASHNODE_API_KEY }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          MEDIUM_API_KEY: ${{ secrets.MEDIUM_API_KEY }}
+          MEDIUM_AUTHOR_ID: ${{ secrets.MEDIUM_AUTHOR_ID }}
+        run: |
+          echo "Debug: Entering Process new files step"
+          echo "New files detected: ${{ steps.new-files.outputs.new_files }}"
+
+          IFS=$'\n'
+          for file in ${{ steps.new-files.outputs.new_files }}; do
+            echo "Processing file: $file"
+            
+            node .github/actions/parse.js "$file"
+          done
