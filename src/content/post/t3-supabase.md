@@ -2,7 +2,7 @@
 layout: ../../layouts/post.astro
 title: T3 stack with app router and supabase
 description: This guide walks through how to create a basic app with the T3 stack, Shadcn, and Supabase
-dateFormatted: 2024-01-06
+date: 2024-01-06
 ---
 
 ## Introduction

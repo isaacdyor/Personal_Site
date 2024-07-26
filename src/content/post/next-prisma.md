@@ -2,7 +2,7 @@
 layout: ../../layouts/post.astro
 title: Setting up Next.js project with Prisma, Supabase, and Shadcn.
 description: This guide walks through how to create a basic app with Next.js, Prisma, Supabase, and Shadcn.
-dateFormatted: 2023-12-13
+date: 2023-12-13
 ---
 
 ## Setting up Next.js

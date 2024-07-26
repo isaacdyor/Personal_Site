@@ -2,7 +2,7 @@
 layout: ../../layouts/post.astro
 title: How to create Google Maps clone with Next.js, Prisma, and Postgres.
 description: Learn how to create a Google Maps clone with Next.js, Prisma, and Postgres. This guide covers the entire process, from setting up your project and database to integrating Google Maps API for displaying markers based on your Postgres data.
-dateFormatted: 2022-06-10
+date: 2022-06-10
 ---
 
 This article is a documentation of my process of implementing a map on my website that displays markers at certain points stored in a Postgres database through Next.js and Prisma.
