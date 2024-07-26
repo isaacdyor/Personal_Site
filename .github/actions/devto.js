@@ -6,7 +6,8 @@ export default async function postToDevTo(frontMatter, body) {
         title: frontMatter.title,
         body_markdown: body,
         published: true,
-        tags: frontMatter.title, // Add tags if needed
+        tags: frontMatter.title,
+        canonical_url: frontMatter.canonical_url,
       },
     });
 
