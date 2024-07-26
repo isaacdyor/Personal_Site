@@ -1,18 +1,42 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+name: New Blog Post Action
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "src/content/post/**"
+
 jobs:
-  Explore-GitHub-Actions:
+  process-new-post:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
+      - name: Checkout code
         uses: actions/checkout@v4
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
+        with:
+          fetch-depth: 0
+
+      - name: Identify new files
+        id: new-files
         run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+          NEW_FILES=$(git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- src/content/posts/)
+          echo "New files: $NEW_FILES"
+          echo "new_files=$NEW_FILES" >> $GITHUB_OUTPUT
+      - name: Process new files
+        if: steps.new-files.outputs.new_files != ''
+        env:
+          HASHNODE_API_KEY: ${{ secrets.HASHNODE_API_KEY }}
+          HASHNODE_PUBLICATION_ID: ${{ secrets.HASHNODE_PUBLICATION_ID }}
+          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+          MEDIUM_API_KEY: ${{ secrets.MEDIUM_API_KEY }}
+          MEDIUM_AUTHOR_ID: ${{ secrets.MEDIUM_AUTHOR_ID }}
+        run: |
+          echo "Debug: Entering Process new files step"
+          echo "New files detected: ${{ steps.new-files.outputs.new_files }}"
+
+          IFS=$'\n'
+          for file in ${{ steps.new-files.outputs.new_files }}; do
+            echo "Processing file: $file"
+            
+            node .github/actions/parse.js "$file"
+          done
