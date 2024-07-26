@@ -3,10 +3,10 @@ export default async function postToDevTo(frontMatter, body) {
     // Prepare the request body
     const postData = JSON.stringify({
       article: {
-        // title: frontMatter.title,
+        title: frontMatter.title,
         body_markdown: body,
-        // published: true,
-        // tags: frontMatter.title, // Add tags if needed
+        published: true,
+        tags: frontMatter.title, // Add tags if needed
       },
     });
 
