@@ -19,7 +19,7 @@ jobs:
       - name: Identify new files
         id: new-files
         run: |
-          NEW_FILES=$(git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- src/content/posts/)
+          NEW_FILES=$(git diff --name-only --diff-filter=A ${{ github.event.before }} ${{ github.sha }} -- src/content/post/)
           echo "New files: $NEW_FILES"
           echo "new_files=$NEW_FILES" >> $GITHUB_OUTPUT
       - name: Process new files
