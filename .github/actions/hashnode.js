@@ -57,7 +57,7 @@ export default async function postToHashnode(frontMatter, content) {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`HTTP error!: ${response.body}`);
     }
 
     const result = await response.json();
