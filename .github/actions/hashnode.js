@@ -19,12 +19,20 @@ export default async function postToHashnode(frontMatter, content) {
 
   let tags = [];
 
+  process.stdout.write(
+    "frontMatter.tags: " + JSON.stringify(frontMatter.tags) + "\n"
+  );
+
   for (const tag of frontMatter.tags) {
     tags.push({
       slug: tag,
       name: tag,
     });
   }
+
+  process.stdout.write(
+    "tags array after processing: " + JSON.stringify(tags) + "\n"
+  );
 
   const variables = {
     input: {
