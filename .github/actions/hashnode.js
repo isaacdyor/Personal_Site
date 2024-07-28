@@ -31,13 +31,7 @@ export default async function postToHashnode(frontMatter, content) {
       publicationId: "668fd7385b543a5085e8ef98",
       title: frontMatter.title,
       contentMarkdown: content,
-      tags: [
-        {
-          id: "56744723958ef13879b9549b",
-          slug: "testing",
-          name: "Testing",
-        },
-      ],
+      tags: tags,
       originalArticleURL: frontMatter.canonical_url,
     },
   };
