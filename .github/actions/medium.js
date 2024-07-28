@@ -5,8 +5,9 @@ export default async function postToMedium(frontMatter, body) {
       title: frontMatter.title,
       contentFormat: "markdown",
       content: body,
-      tags: ["football", "sport", "Liverpool"],
+      tags: frontMatter.tags,
       publishStatus: "public",
+      canonicalUrl: frontMatter.canonical_url,
     });
 
     // Prepare the request headers

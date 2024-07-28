@@ -27,6 +27,7 @@ export default async function postToHashnode(frontMatter, content) {
           name: "Testing",
         },
       ],
+      canonicalUrl: frontMatter.canonical_url,
     },
   };
 
