@@ -15,6 +15,17 @@ export default async function postToHashnode(frontMatter, content) {
     }
   `;
 
+  // create a function that turns tags (list of strings) into an array of objects with slug and name, both of which are the string from the list
+
+  let tags = [];
+
+  for (const tag of frontMatter.tags) {
+    tags.push({
+      slug: tag,
+      name: tag,
+    });
+  }
+
   const variables = {
     input: {
       publicationId: "668fd7385b543a5085e8ef98",
