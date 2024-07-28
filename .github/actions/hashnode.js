@@ -17,18 +17,17 @@ export default async function postToHashnode(frontMatter, content) {
 
   // create a function that turns tags (list of strings) into an array of objects with slug and name, both of which are the string from the list
 
-  let tags = [];
-
   process.stdout.write(
     "frontMatter.tags: " + JSON.stringify(frontMatter.tags) + "\n"
   );
 
-  for (const tag of frontMatter.tags) {
-    tags.push({
-      slug: tag,
-      name: tag,
-    });
-  }
+  const tagsArray = JSON.parse(tagsString);
+
+  // Map the array to the desired object format
+  const tags = tagsArray.map((tag) => ({
+    slug: tag,
+    name: tag,
+  }));
 
   process.stdout.write(
     "tags array after processing: " + JSON.stringify(tags) + "\n"
