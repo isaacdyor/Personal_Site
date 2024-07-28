@@ -29,9 +29,7 @@ export default async function postToHashnode(frontMatter, content) {
     name: tag,
   }));
 
-  process.stdout.write(
-    "tags array after processing: " + JSON.stringify(tags) + "\n"
-  );
+  process.stdout.write("tags array after processing: " + tags + "\n");
 
   const variables = {
     input: {
@@ -57,9 +55,16 @@ export default async function postToHashnode(frontMatter, content) {
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error!: ${response.body}`);
+      const errorBody = await response.text();
+      process.stdout.write(`Response status: ${response.status}\n`);
+      process.stdout.write(
+        `Response headers: ${JSON.stringify(response.headers.raw())}\n`
+      );
+      process.stdout.write(`Error body: ${errorBody}\n`);
+      throw new Error(
+        `HTTP error! status: ${response.status}, body: ${errorBody}`
+      );
     }
-
     const result = await response.json();
 
     if (result.errors) {
