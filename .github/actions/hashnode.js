@@ -17,9 +17,7 @@ export default async function postToHashnode(frontMatter, content) {
 
   // create a function that turns tags (list of strings) into an array of objects with slug and name, both of which are the string from the list
 
-  process.stdout.write(
-    "frontMatter.tags: " + JSON.stringify(frontMatter.tags) + "\n"
-  );
+  process.stdout.write("frontMatter.tags: " + frontMatter.tags + "\n");
 
   const tagsArray = JSON.parse(frontMatter.tags);
 
@@ -55,16 +53,9 @@ export default async function postToHashnode(frontMatter, content) {
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      process.stdout.write(`Response status: ${response.status}\n`);
-      process.stdout.write(
-        `Response headers: ${JSON.stringify(response.headers.raw())}\n`
-      );
-      process.stdout.write(`Error body: ${errorBody}\n`);
-      throw new Error(
-        `HTTP error! status: ${response.status}, body: ${errorBody}`
-      );
+      throw new Error(`HTTP error!: ${response.body}`);
     }
+
     const result = await response.json();
 
     if (result.errors) {
