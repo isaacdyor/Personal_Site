@@ -19,10 +19,7 @@ export default async function postToHashnode(frontMatter, content) {
 
   process.stdout.write("frontMatter.tags: " + frontMatter.tags + "\n");
 
-  const tagsArray = JSON.parse(frontMatter.tags);
-
-  // Map the array to the desired object format
-  const tags = tagsArray.map((tag) => ({
+  const tags = frontMatter.tags.map((tag) => ({
     slug: tag,
     name: tag,
   }));
