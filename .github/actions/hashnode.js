@@ -15,23 +15,11 @@ export default async function postToHashnode(frontMatter, content) {
     }
   `;
 
-  // create a function that turns tags (list of strings) into an array of objects with slug and name, both of which are the string from the list
-
-  process.stdout.write("frontMatter.tags: " + frontMatter.tags + "\n");
-
-  const tags = frontMatter.tags.map((tag) => ({
-    slug: tag,
-    name: tag,
-  }));
-
-  process.stdout.write("tags array after processing: " + tags + "\n");
-
   const variables = {
     input: {
       publicationId: "668fd7385b543a5085e8ef98",
       title: frontMatter.title,
       contentMarkdown: content,
-      tags: tags,
       originalArticleURL: frontMatter.canonical_url,
     },
   };
