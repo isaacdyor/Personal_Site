@@ -17,7 +17,7 @@ export default async function postToHashnode(frontMatter, content) {
 
   const variables = {
     input: {
-      publicationId: "668fd7385b543a5085e8ef98",
+      publicationId: process.env.HASHNODE_PUBLICATION_ID,
       title: frontMatter.title,
       contentMarkdown: content,
       originalArticleURL: frontMatter.canonical_url,
