@@ -5,7 +5,6 @@ import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
 import { Image } from "astro:assets";
-import meImage from "../../public/assets/images/me.png";
 ---
 
 <Layout
@@ -56,13 +55,6 @@ import meImage from "../../public/assets/images/me.png";
             </span>
           </div>
           <div class="relative z-30 px-20">
-            <!-- <img
-              src="/assets/images/me.png"
-              loading="eager"
-              decoding="auto"
-              class="relative z-30 w-full aspect-[1853/3390] md:max-w-md mx-auto dark:-translate-y-0.5"
-              alt="Picture of Isaac Dyor"
-            /> -->
             <Image
               src="/assets/images/me.webp"
               width={1853}
