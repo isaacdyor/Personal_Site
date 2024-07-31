@@ -43,7 +43,7 @@ async function postToBlogs(filePath) {
 
   await postToDevTo(frontmatter, body);
   await postToHashnode(frontmatter, body);
-  // await postToMedium(frontmatter, body);
+  await postToMedium(frontmatter, body);
 
   process.stdout.write("Request ended\n"); // Debugging statement
 }
