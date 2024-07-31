@@ -4,11 +4,13 @@ import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
+import { Image } from "astro:assets";
+import meImage from "../../public/assets/images/me.png";
 ---
 
 <Layout
   title="Isaac Dyor"
-  description="Welcome to Isaac Dyor's portfolio. UW Computer Science student specializing in Next.js, Tailwind, and full-stack development. Explore my projects and tech journey."
+  description="Hello, I'm Isaac Dyor. I'm a Computer Science student at the University of Washington. My usual tech stack: Next.js; Tailwind; Prisma; Supabase; and more."
 >
   <div
     class="relative z-20 w-full max-w-4xl mx-auto mt-16 px-7 md:mt-24 lg:mt-32 xl:px-0"
@@ -54,12 +56,20 @@ import Layout from "../layouts/main.astro";
             </span>
           </div>
           <div class="relative z-30 px-20">
-            <img
+            <!-- <img
               src="/assets/images/me.png"
               loading="eager"
               decoding="auto"
               class="relative z-30 w-full aspect-[1853/3390] md:max-w-md mx-auto dark:-translate-y-0.5"
               alt="Picture of Isaac Dyor"
+            /> -->
+            <Image
+              src={meImage}
+              widths={[280, 560, 840, 1120]}
+              sizes="(max-width: 768px) 100vw, 448px"
+              alt="Picture of Isaac Dyor"
+              class="relative z-30 w-full md:max-w-md mx-auto dark:-translate-y-0.5"
+              loading="eager"
             />
           </div>
           <div
