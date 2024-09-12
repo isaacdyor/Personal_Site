@@ -1,14 +1,14 @@
 [
   {
-    "name": "Spark Royalty",
-    "description": "A royalty based freelancing market",
-    "image": "/assets/images/projects/sparkroyalty2.png",
-    "url": "https://sparkroyalty2.vercel.app/"
-  },
-  {
     "name": "Febak",
     "description": "Intercom alternative with sick vibes",
     "image": "/assets/images/projects/febak.png",
     "url": "https://febak.vercel.app/"
+  },
+  {
+    "name": "Spark Royalty",
+    "description": "A royalty based freelancing market",
+    "image": "/assets/images/projects/sparkroyalty2.png",
+    "url": "https://sparkroyalty2.vercel.app/"
   }
 ]
