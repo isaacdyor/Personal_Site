@@ -1,14 +1,26 @@
 [
   {
+    "name": "RepoRider",
+    "description": "A platform for generating blogs based on your github repositories",
+    "image": "/assets/images/projects/reporider.png",
+    "url": "https://github.com/isaacdyor/reporider"
+  },
+  {
+    "name": "Gregwire",
+    "description": "A communication automation platform",
+    "image": "/assets/images/projects/gregwire.png",
+    "url": "https://github.com/isaacdyor/Gregwire"
+  },
+  {
     "name": "Febak",
     "description": "Intercom alternative with sick vibes",
     "image": "/assets/images/projects/febak.png",
-    "url": "https://febak.vercel.app/"
+    "url": "https://github.com/isaacdyor/Febak"
   },
   {
     "name": "Spark Royalty",
     "description": "A royalty based freelancing market",
     "image": "/assets/images/projects/sparkroyalty2.png",
-    "url": "https://sparkroyalty2.vercel.app/"
+    "url": "https://github.com/isaacdyor/sparkroyalty2"
   }
 ]
